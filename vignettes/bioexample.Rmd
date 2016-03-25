@@ -1,0 +1,77 @@
+Biology Example
+---------------------------
+
+The PAC data analysis pipeline can be applied to mass-cytometry (CyTOF) data analysis. In this case, the user reads in the fcs format file, scales the data, and cleans the data. The user needs to install the Bioconductor package flowCore to read in fcs files in R.
+
+Load the required R packages
+
+```{r Load R packages}
+library(data.table)
+library(dplyr)
+library(NMF)
+library(RJSONIO)
+library(PAC)
+```
+
+Load the data
+
+```{r Load data}
+datafile = 'CyTOFData.txt'
+input = read.table(datafile, header = TRUE)  #the data file contains marker names
+SampleID = input[,1]  #the first column contains the sample name of the cell events
+data = as.matrix(input[,-1])
+```
+
+Partition, cluster, and merge the data into desired number of subpopulations
+
+```{r PAC}
+ML = 50                 #number of hyper-rectangles to generate
+C = 6                  #desired number of subpopulations
+pac_method = "dsp"      #d-PAC
+
+subpopulationLabels = PAC(data, C, maxlevel = ML, method = pac_method, max.iter = 50)
+```
+
+Aggregation of the clustering results
+
+```{r Aggregation}
+data_agg = aggregateData(input, subpopulationLabels)
+```
+
+Draw expression level heatmap for all subpopulations (choices: max, mean, median)
+
+```{r Expression level heatmap}
+expressionlevels = signalLevelHeatmap(data_agg, signal_level=max)
+columnOrder<-expressionlevels$colInd
+```
+
+Draw subpopulation proportion heatmap for all samples
+
+```{r Subpopulation proportion heatmap}
+subpopprop = clusterPropHeatmap(data_agg, Colv_order = columnOrder)
+```
+
+Obtain annotations of subpopulations
+
+```{r Annotation}
+subpop_names_top2 = clusterNames(data_agg, Num_TopFeatures = 2)
+subpop_names_top2
+write.table(subpop_names_top2, "subpop_names_top2.txt", quote=FALSE,col.names=FALSE)
+```
+
+Generate packed circle plot of the subpopulations and samples.
+
+The annotation from the previous step is used to label the circles. CountFilter is a parameter that is used to filter out estimated subpopulations with less cell events than the set threshold.
+
+```{r Packed circles plot input generation}
+packedCircleInput(data_agg, subpop_names_top2, CountFilter = 10, filename="zoomablePackedCirclesInput.txt")
+```
+
+Please open "zoomablePackedCirclesVisualization.html" in Firefox in Mac or Google Safari in Windows; these are the more stable browsers for viewing the packed circle plot. Please make sure that "zoomablePackedCirclesInput.txt" is in the same directory as the html file.
+
+
+
+
+
+
+
