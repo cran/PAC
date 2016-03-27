@@ -1,6 +1,6 @@
-8417dec2bb8e024078c46b16f439283d *DESCRIPTION
+9efaba9e97f444c255a61bcba673e560 *DESCRIPTION
 ea2c058007936143090deb2e83e6756b *NAMESPACE
-f505bd730a93be671e1252a7f4b5380b *R/PAC.R
+6d3c74efb078b60a176eedf8f300c184 *R/PAC.R
 7b9f10e4a2e015e097f59b6ee0410835 *R/RcppExports.R
 00cdc34b2a7de8cc5565f5b36aacacbd *R/aggregateData.R
 96d804055e2bdfad4acb3ceefd43f377 *R/clusterNames.R
@@ -11,7 +11,7 @@ f4bb8a76d039ee66360accc8e2a823ef *R/fmeasure.R
 a67ce0660859da1d8468f4b29dcd0660 *R/packedCircleInput.R
 30e1bc42ce831a4958fe85dcf0beb2a0 *R/signalLevelHeatmap.R
 4fd6d5ccee173be70e486cfbeaa4e230 *build/vignette.rds
-ec247c368851306aa57646ccaa82c0e6 *configure.ac
+c94b7e040db61ff0de04c9b82227400d *configure.ac
 98c7f00a58f336142ecbba33fcf394a2 *configure.win
 b2c5b681caf739cff881a2f0bf8c98de *inst/doc/intro.R
 23a0c5e9fd408fe9e7500515b4f5297c *inst/doc/intro.Rmd
