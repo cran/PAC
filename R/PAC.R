@@ -10,6 +10,7 @@ NULL
 #' @param  N        number of leaves centers
 #' @param  method   partition method, either "dsp(discrepancy based partition)",  or "bsp(bayesian sequantial partition)"
 #' @return leafctr  N leaves centers
+#' @export
 #' @import Rcpp
 BSPLeaveCenter <- function(data, N = 40, method = "dsp") {
   leafctr = BSPLeaveCenterCpp(data, N, method) # cpp function

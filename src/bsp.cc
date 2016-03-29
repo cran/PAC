@@ -184,7 +184,7 @@ bspNode::bspNode(bspNode *parent_) : prev(NULL)
  		double g = (range[j][1] - range[j][0])/ nCut;
  		vector<double> pCount(nCut, 0);
  		for(uint k = 0; k < n; k++) {
- 			int index = std::min(floor((T.getDataAt(idx[k], j) - range[j][0]) / g) + 1, double(nCut)) - 1;
+ 			int index = std::min(floor(double((T.getDataAt(idx[k], j) - range[j][0]) / g)) + 1, double(nCut)) - 1;
  			pCount[index] += incre;
  		}
 
@@ -345,7 +345,7 @@ void bspTree::dsp(const uint nCut, const uint maxlevel, double theta) {
 			if (this->getNleaves() >= maxlevel) break;
 			if (leafptr->getSplitFurthur()) {	
 				uint maxIndex = leafptr->getMaxGapIdx(*this, nCut);
-				uint cutDim = floor(maxIndex/nCut);
+				uint cutDim = floor(double(maxIndex/nCut));
 				uint cutPtr = maxIndex % nCut + 1;
 				leafptr->setSplitDims(cutDim);
 				// creating two new nodes on the heap
