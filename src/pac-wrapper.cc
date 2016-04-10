@@ -58,6 +58,8 @@ Rcpp::NumericMatrix BSPLeaveCenterCpp(Rcpp::NumericMatrix data, SEXP numleaves, 
 		Rcpp::Rcout << "unknown method" << std::endl;
 		return dummy;
 	}
+
+	Rcpp::Rcout << "partition completed" << std::endl;
  	T.CalculateLeafCenter();
 
  	/* copy results back to R */

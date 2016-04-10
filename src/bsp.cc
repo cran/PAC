@@ -175,21 +175,28 @@ bspNode::bspNode(bspNode *parent_) : prev(NULL)
 
 /* returns the index of the maximal discrepancy */
  uint bspNode::getMaxGapIdx(const bspTree &T, const uint nCut) const {
- 	uint dim = T.getDim();
+  	uint dim = T.getDim();
  	uint n = this->getNumPts();
- 	vector<double> gap(dim*nCut, 0);
+ 	vector<double> gap(dim*(nCut-1), 0);
 
  	double incre = 1.0/n;
  	for(uint j = 0; j < dim; j++) {
  		double g = (range[j][1] - range[j][0])/ nCut;
+		if (g < 1e-8) {
+			return -1; 
+		}
  		vector<double> pCount(nCut, 0);
- 		for(uint k = 0; k < n; k++) {
- 			int index = std::min(floor(double((T.getDataAt(idx[k], j) - range[j][0]) / g)) + 1, double(nCut)) - 1;
+ 		for(uint i = 0; i < n; i++) {
+ 			int index = std::min(floor(double((T.getDataAt(idx[i], j) 
+							- range[j][0])) / g) + 1, double(nCut)) - 1;
+
+	
+
  			pCount[index] += incre;
  		}
 
- 		for(uint k = 0; k < nCut; k++) {
- 			gap[j*nCut+k] = std::fabs(vecPartialSum(pCount, k+1) - (k+1.0)/nCut);
+ 		for(uint k = 0; k < nCut - 1; k++) {
+ 			gap[j*(nCut-1)+k] = fabs(vecPartialSum(pCount, k) - (k+1.0)/nCut);
  		}
  	}
 
@@ -221,12 +228,17 @@ bspNode::bspNode(bspNode *parent_) : prev(NULL)
  	lc->updatelnMass();
  	rc->updatelnMass();
 
- 	if (lc->getNumPts() < theta*MAX_NPTS || theta*MAX_NPTS == 0) {
+ 	if (lc->getNumPts() < MAX_NPTS) {
+ 	//if (lc->getNumPts() < MAX_NPTS && lc->computeDiscrepancy(T) < THETA ) {
  		lc->setSplitFurther(false);
+ 	} else {
+ 		lc->setSplitFurther(true);
  	}
-
- 	if (rc->getNumPts() < theta*MAX_NPTS || theta*MAX_NPTS == 0)  {
+	if (rc->getNumPts() < MAX_NPTS) {
+ 	//if (rc->getNumPts() < MAX_NPTS && rc->computeDiscrepancy(T) < THETA)  {
  		rc->setSplitFurther(false);
+ 	} else {
+ 		rc->setSplitFurther(true);
  	}
 
  	lc->setNodeID(totalNodes + 1);
@@ -337,21 +349,30 @@ void bspTree::removeleaf(bspNode *leaf){
 
 /* quite version, only partition the space */
 void bspTree::dsp(const uint nCut, const uint maxlevel, double theta) {
-	while (this->getNleaves() < maxlevel) {
+	while (this->getNZleaves() < maxlevel) {
 		bspNode *leafptr = this->head;
 		bool added = false;
 
 		while (leafptr != NULL) {
-			if (this->getNleaves() >= maxlevel) break;
+			if (this->getNZleaves() >= maxlevel) break;
 			if (leafptr->getSplitFurthur()) {	
-				uint maxIndex = leafptr->getMaxGapIdx(*this, nCut);
-				uint cutDim = floor(double(maxIndex/nCut));
-				uint cutPtr = maxIndex % nCut + 1;
+
+				int maxIndex = leafptr->getMaxGapIdx(*this, nCut);
+				
+				if (maxIndex == -1) {
+					leafptr->setSplitFurther(false);
+					leafptr = leafptr->getNextLeaf();
+					continue;
+				}
+				uint cutDim = floor(double(maxIndex/(nCut-1)));
+				uint cutPtr = maxIndex % (nCut-1) + 1;
 				leafptr->setSplitDims(cutDim);
 				// creating two new nodes on the heap
 				bspNode *lc = new bspNode(leafptr);
 				bspNode *rc = new bspNode(leafptr);
-				leafptr->discrepancySplit(cutDim, cutPtr, nCut, *this, lc, rc, this->getNNodes()-1, theta);
+				leafptr->discrepancySplit(cutDim, cutPtr, nCut,
+										  *this, lc, rc,
+										  this->getNNodes()-1, theta);
 				leafptr->setSpliton(cutDim);
 				this->appendleaf(rc);
 				this->appendleaf(lc);
@@ -367,6 +388,7 @@ void bspTree::dsp(const uint nCut, const uint maxlevel, double theta) {
 
 		}
 		if (!added)	break;
+
 	}
 	return;
 }

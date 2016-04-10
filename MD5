@@ -1,6 +1,6 @@
-45194be2921ac39cef2b8bf356e0be30 *DESCRIPTION
+38f4450889a373147ead9dfa9ff230a9 *DESCRIPTION
 5971f008d97199d40d8bfd52706a215e *NAMESPACE
-b7cdfea108f5ca1b170466b87ac44de4 *R/PAC.R
+b9deba1e036d63f120f497efaed4f19b *R/PAC.R
 7b9f10e4a2e015e097f59b6ee0410835 *R/RcppExports.R
 00cdc34b2a7de8cc5565f5b36aacacbd *R/aggregateData.R
 96d804055e2bdfad4acb3ceefd43f377 *R/clusterNames.R
@@ -28,10 +28,10 @@ bc0d76fe0ef12a4df48747cc13f8f3c8 *man/makeList.Rd
 0c62a2f52b12a8db2912bb259fd2b07c *man/signalLevelHeatmap.Rd
 d517a16f2688c4d83864aa8fb301b72c *src/Makevars
 c6d624e03604cf32bf168511a731e208 *src/RcppExports.cpp
-03c0b8f7c72c8a03e65390e2cb7f40db *src/bsp.cc
+aad1a3333f84a150ed93150e5e7e5772 *src/bsp.cc
 3aa6d729a782a7195018a6234fe35c9d *src/bsp.h
 3fa764885c3f99b04e0dae3f551cabd5 *src/bspconst.h
-29481e2476c208aa6dd976c2cde0acce *src/pac-wrapper.cc
+ca698b74cea7e40818040bab4f5074c1 *src/pac-wrapper.cc
 5c12a4d7c1ececdc17e6f5d97dfab29e *src/type.h
 53ab7cd275ac23355bd53c9b0b2e55ff *src/util.cc
 daca98b8b2d72930444754e809ed858b *src/util.h
