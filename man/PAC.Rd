@@ -7,18 +7,18 @@
 PAC(data, K, maxlevel = 40, method = "dsp", max.iter = 50)
 }
 \arguments{
-\item{data}{: a n x p data matrix}
+\item{data}{a n x p data matrix}
 
-\item{K}{: number of final clusters in the output}
+\item{K}{number of final clusters in the output}
 
-\item{maxlevel}{: the maximum level of the partition}
+\item{maxlevel}{the maximum level of the partition}
 
-\item{method}{: partition method, either "dsp(discrepancy based partition)",  or "bsp(bayesian sequantial partition)"}
+\item{method}{partition method, either "dsp(discrepancy based partition)",  or "bsp(bayesian sequantial partition)"}
 
-\item{max.iter}{: maximum iteration for the kmeans step}
+\item{max.iter}{maximum iteration for the kmeans step}
 }
 \value{
-y        : cluter labels for the input
+y        cluter labels for the input
 }
 \description{
 PAC (Partition Assisted Clustering)

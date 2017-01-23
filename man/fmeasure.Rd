@@ -7,12 +7,12 @@
 fmeasure(g, t)
 }
 \arguments{
-\item{g}{: the ground truth}
+\item{g}{the ground truth}
 
-\item{t}{: estimated labels}
+\item{t}{estimated labels}
 }
 \value{
-f  : the F measure
+f  the F measure
 }
 \description{
 Compute the F measure between the ground truth and the estimated label

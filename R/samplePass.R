@@ -1,0 +1,33 @@
+#' A wrapper to run PAC and output subpopulation mutual information networks.
+#' 
+#' 
+#' @param sampleIDs sampleID vector
+#' @param hyperrectangles number of hyperrectangles to learn for each sample
+#' @param num_PACSupop number of subpopulations to output for each sample using PAC
+#' @param max.iter postprocessing kmeans iterations
+#' @param num_networkEdge a threshold on the number of edges to output for each subpopulation mutual information network
+#' @export
+
+samplePass<-function(sampleIDs,hyperrectangles, num_PACSupop, max.iter,num_networkEdge){
+  for(i in 1:length(sampleIDs)){
+    
+    load(paste0(sampleIDs[i], ".Rdata"))
+    inputMatrix<-get(sampleIDs[i])
+    
+    subpopulationLabels = PAC(inputMatrix, num_PACSupop, maxlevel = hyperrectangles, method = "dsp", max.iter = max.iter)
+    save(subpopulationLabels, file=paste0(sampleIDs[i], "_subpopulationLabels.Rdata"))
+    
+    inputMatrix_withSampleName<-cbind(sampleIDs[i], as.data.frame(inputMatrix))
+    data_agg<-aggregateData(inputMatrix_withSampleName,subpopulationLabels)
+    save(data_agg, file=paste0(sampleIDs[i], "_data_agg.Rdata"))
+    
+    mainDir <- getwd()
+    subDir <- paste0("/", sampleIDs[i], "_SampleSubpopulationMatrixNetworks")
+    dir.create(file.path(mainDir, subDir))
+    setwd(paste0(mainDir, subDir))
+    outputNetworks_topEdges_matrix(inputMatrix_withSampleName, subpopulationLabels, threshold=num_networkEdge)
+    setwd(mainDir)
+    
+    save(inputMatrix_withSampleName, file=paste0(sampleIDs[i], "_dataMatrix.Rdata"))
+  }
+}

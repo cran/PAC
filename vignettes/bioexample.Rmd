@@ -1,76 +1,74 @@
 Biology Example
 ---------------------------
 
-The PAC data analysis pipeline can be applied to mass-cytometry (CyTOF) data analysis. In this case, the user reads in the fcs format file, scales the data, and cleans the data. The user needs to install the Bioconductor package flowCore to read in fcs files in R.
+The PAC-MAN data analysis pipeline can be applied to mass-cytometry (CyTOF) data analysis. In this case, the user reads in the example data files (already saved as the Rdata format) from Bendall et al., 2011 and goes through the data analysis pipeline.
 
 Load the required R packages
 
 ```{r Load R packages}
-library(data.table)
-library(dplyr)
-library(NMF)
-library(RJSONIO)
+library(NMF) #for plotting heatmap; the user can choose to use other heatmap packages as well
+
 library(PAC)
+
+
 ```
 
-Load the data
+Construct the sampleIDs vector to analyze the data
 
 ```{r Load data}
-datafile = 'CyTOFData.txt'
-input = read.table(datafile, header = TRUE)  #the data file contains marker names
-SampleID = input[,1]  #the first column contains the sample name of the cell events
-data = as.matrix(input[,-1])
+sampleIDs<-c("Basal", "BCR", "IL7")
+
 ```
 
-Partition, cluster, and merge the data into desired number of subpopulations
+Partition, cluster into desired number of subpopulations, and output subpopulation mutual information networks
 
-```{r PAC}
-ML = 50                 #number of hyper-rectangles to generate
-C = 6                  #desired number of subpopulations
-pac_method = "dsp"      #d-PAC
-
-subpopulationLabels = PAC(data, C, maxlevel = ML, method = pac_method, max.iter = 50)
+```{r PAC and Network Inference}
+samplePass(sampleIDs, hyperrectangles=35, num_PACSupop=25, num_networkEdge=50, max.iter=50)
 ```
 
-Aggregation of the clustering results
+Multiple Alignments of Networks
 
-```{r Aggregation}
-data_agg = aggregateData(input, subpopulationLabels)
+```{r MAN}
+
+clades_network_only<-MAN(sampleIDs, num_PACSupop=25, smallSubpopCutoff=100, k_clades=5)
+
 ```
 
-Draw expression level heatmap for all subpopulations (choices: max, mean, median)
+Refine the PAC labels with multiple alignments of networks representative labels for clades
 
-```{r Expression level heatmap}
-expressionlevels = signalLevelHeatmap(data_agg, signal_level=max)
-columnOrder<-expressionlevels$colInd
+```{r refine PAC labels with MAN clade results}
+refineSubpopulationLabels(sampleIDs,clades_network_only, expressionGroupClamp=5)
 ```
 
-Draw subpopulation proportion heatmap for all samples
+Draw clade/representative mutual information networks
 
-```{r Subpopulation proportion heatmap}
-subpopprop = clusterPropHeatmap(data_agg, Colv_order = columnOrder)
+```{r Clade Networks}
+getRepresentativeNetworks(sampleIDs, SubpopSizeFilter=10, num_networkEdge=50)
 ```
 
 Obtain annotations of subpopulations
 
 ```{r Annotation}
-subpop_names_top2 = clusterNames(data_agg, Num_TopFeatures = 2)
-subpop_names_top2
-write.table(subpop_names_top2, "subpop_names_top2.txt", quote=FALSE,col.names=FALSE)
+aggregateMatrix_withAnnotation<-annotateClades(sampleIDs, topHubs=4)
+head(aggregateMatrix_withAnnotation)
+
 ```
 
-Generate packed circle plot of the subpopulations and samples.
 
-The annotation from the previous step is used to label the circles. CountFilter is a parameter that is used to filter out estimated subpopulations with less cell events than the set threshold.
+Obtain heatmap input and plot heatmap
 
-```{r Packed circles plot input generation}
-packedCircleInput(data_agg, subpop_names_top2, CountFilter = 10, filename="zoomablePackedCirclesInput.txt")
+```{r Heatmap input and plot heatmap}
+cladeProportionMatrix<-heatmapInput(aggregateMatrix_withAnnotation)
+aheatmap(as.matrix(cladeProportionMatrix))
 ```
 
-Please open "zoomablePackedCirclesVisualization.html" in Firefox in Mac or Google Safari in Windows; these are the more stable browsers for viewing the packed circle plot. Please make sure that "zoomablePackedCirclesInput.txt" is in the same directory as the html file.
 
+Append subpopulation proportions for each sample in the annotation matrix
 
-
+```{r Append subpopulation proporation for each sample}
+annotationMatrix_prop<-annotationMatrix_withSubpopProp(aggregateMatrix_withAnnotation)
+head(annotationMatrix_prop)
+```
 
 
 

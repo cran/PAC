@@ -9,12 +9,12 @@ BSPLeaveCenter(data, N = 40, method = "dsp")
 \arguments{
 \item{data}{a n x p data matrix}
 
-\item{N}{: number of leaves centers}
+\item{N}{number of leaves centers}
 
-\item{method}{: partition method, either "dsp(discrepancy based partition)",  or "bsp(bayesian sequantial partition)"}
+\item{method}{partition method, either "dsp(discrepancy based partition)",  or "bsp(bayesian sequantial partition)"}
 }
 \value{
-leafctr  : N leaves centers
+leafctr  N leaves centers
 }
 \description{
 Finds N Leaf centers in the data

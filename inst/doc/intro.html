@@ -225,17 +225,13 @@ X &lt;- as.matrix(rnorm(n=n,mean=mu[g],sd=sd[g]))
 <p>The main entry point for the PAC package is the function <code>PAC</code>. To begin, we call <code>PAC</code> with all of the default options.</p>
 
 <pre><code class="r">library(PAC)
-</code></pre>
-
-<pre><code>## Note: the specification for S3 class &quot;AsIs&quot; in package &#39;RJSONIO&#39; seems equivalent to one from package &#39;BiocGenerics&#39;: not turning on duplicate class definitions for this class.
-</code></pre>
-
-<pre><code class="r">y &lt;- PAC(X, K)
+y &lt;- PAC(X, K)
 </code></pre>
 
 <pre><code>## Input Data: 5000 by 1
 ## Partition method: Discrepancy based partition
 ## Maximum level: 40
+## partition completed
 ## [1] &quot;Initial Clustering...&quot;
 ## [1] &quot;Merging...&quot;
 </code></pre>
@@ -246,7 +242,7 @@ of the default options.</p>
 <pre><code class="r">print(fmeasure(g,y))
 </code></pre>
 
-<pre><code>## [1] 0.9936355
+<pre><code>## [1] 0.9940302
 </code></pre>
 
 <h1>Changing the default parameters</h1>
@@ -261,6 +257,7 @@ of the default options.</p>
 <pre><code>## Input Data: 5000 by 1
 ## Partition method: Discrepancy based partition
 ## Maximum level: 100
+## partition completed
 ## [1] &quot;Initial Clustering...&quot;
 ## [1] &quot;Merging...&quot;
 </code></pre>
@@ -268,7 +265,7 @@ of the default options.</p>
 <pre><code class="r">print(fmeasure(g,y.deep))
 </code></pre>
 
-<pre><code>## [1] 0.9964039
+<pre><code>## [1] 0.9801951
 </code></pre>
 
 <p>Or, one can change the partition method to be bsp with limited lookahead See [@lu2013multivariate], [@wong2010optional]. The default is dsp [@yang2014density]. </p>
@@ -279,6 +276,7 @@ of the default options.</p>
 <pre><code>## Input Data: 5000 by 1
 ## Partition method: BSP with limited-lookahead
 ## Maximum level: 40
+## partition completed
 ## [1] &quot;Initial Clustering...&quot;
 ## [1] &quot;Merging...&quot;
 </code></pre>

@@ -1,6 +1,0 @@
-1 pCrkL-pCREB
-2 pBtk.Itk-pS6
-3 pBtk.Itk-Ki67
-4 pSTAT5-pPLCgamma2
-5 pH3-Ki67
-6 pP38-pH3

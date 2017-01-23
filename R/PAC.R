@@ -70,10 +70,8 @@ PAC <- function(data, K, maxlevel = 40, method = "dsp", max.iter = 50) {
     return(d)
   }
   
-  leafcenters = BSPLeaveCenter(data, maxlevel, method)
-  
+  leafcenters = BSPLeaveCenter(data, maxlevel, method) 
   maxC = nrow(leafcenters)
-  print(maxC)
   print("Initial Clustering...")
   options(warn=-1)
   fit = kmeans(data, leafcenters, algorithm = "Lloyd", iter.max = max.iter, trace = TRUE)
