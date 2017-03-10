@@ -30,7 +30,7 @@ getRepresentativeNetworks<-function(sampleIDs, SubpopSizeFilter, num_networkEdge
     newlabels<-newlabels[whetherToKeep]
     dataMatrix_filtered<-inputMatrix_withSampleName[whetherToKeep,]
     
-    outputRepresentativeNetworks_topEdges(dataMatrix_filtered, newlabels, threshold=num_networkEdge)
+    outputRepresentativeNetworks_topEdges(dataMatrix_filtered, newlabels, threshold=(2*num_networkEdge))
     setwd(mainDir)
     
     save(dataMatrix_filtered, file=paste0(sampleID,"_dataMatrix_filtered.Rdata"))

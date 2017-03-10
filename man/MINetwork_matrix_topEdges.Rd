@@ -2,7 +2,7 @@
 % Please edit documentation in R/MINetwork_matrix_topEdges.R
 \name{MINetwork_matrix_topEdges}
 \alias{MINetwork_matrix_topEdges}
-\title{Mutual information network connection matrix generation (mrnet algorithm) using the parmigene package}
+\title{Mutual information network connection matrix generation (mrnet algorithm) using the parmigene package. Mutual information calculated with infotheo package.}
 \usage{
 MINetwork_matrix_topEdges(dataMatrix, threshold)
 }
@@ -15,6 +15,6 @@ MINetwork_matrix_topEdges(dataMatrix, threshold)
 the mutual information network connection matrix with top edges
 }
 \description{
-Mutual information network connection matrix generation (mrnet algorithm) using the parmigene package
+Mutual information network connection matrix generation (mrnet algorithm) using the parmigene package. Mutual information calculated with infotheo package.
 }
 

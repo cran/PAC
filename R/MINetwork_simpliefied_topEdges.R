@@ -1,11 +1,14 @@
 #' Outputs the vectorized summary of a network based on the number of edges connected to a node
 #' @import parmigene
+#' @importFrom infotheo discretize mutinformation
 #' @param dataMatrix data matrix with first column being the sample ID
 #' @param threshold the number of edges to draw for each subpopulation mutual information network
 
 MINetwork_simplified_topEdges<-function(dataMatrix, threshold){
   
-  dataMatrix_mi<-knnmi.all(t(dataMatrix))
+  dat<-discretize(dataMatrix)
+  dataMatrix_mi<-mutinformation(dat, method="emp")
+  
   dataMatrix_net<-mrnet(dataMatrix_mi)
   
   filterLevel<-dataMatrix_net[order(dataMatrix_net, decreasing=TRUE)][threshold]

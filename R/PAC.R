@@ -27,6 +27,19 @@ BSPLeaveCenter <- function(data, N = 40, method = "dsp") {
 #' @param  max.iter maximum iteration for the kmeans step
 #' @return y        cluter labels for the input
 #' @export
+#' 
+#' @examples 
+#' n = 5e3                       # number of observations
+#' p = 1                         # number of dimensions
+#' K = 3                         # number of clusters
+#' w = rep(1,K)/K                # component weights
+#' mu <- c(0,2,4)                # component means
+#' sd <- rep(1,K)/K              # component standard deviations
+#' g <- sample(1:K,prob=w,size=n,replace=TRUE)   # ground truth for clustering
+#' X <- as.matrix(rnorm(n=n,mean=mu[g],sd=sd[g]))
+#' y <- PAC(X, K)
+#' print(fmeasure(g,y))
+
 PAC <- function(data, K, maxlevel = 40, method = "dsp", max.iter = 50) {
   if (typeof(data) != "matrix")
     data = as.matrix(data)

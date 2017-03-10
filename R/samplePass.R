@@ -25,7 +25,7 @@ samplePass<-function(sampleIDs,hyperrectangles, num_PACSupop, max.iter,num_netwo
     subDir <- paste0("/", sampleIDs[i], "_SampleSubpopulationMatrixNetworks")
     dir.create(file.path(mainDir, subDir))
     setwd(paste0(mainDir, subDir))
-    outputNetworks_topEdges_matrix(inputMatrix_withSampleName, subpopulationLabels, threshold=num_networkEdge)
+    outputNetworks_topEdges_matrix(inputMatrix_withSampleName, subpopulationLabels, threshold=(2*num_networkEdge))
     setwd(mainDir)
     
     save(inputMatrix_withSampleName, file=paste0(sampleIDs[i], "_dataMatrix.Rdata"))

@@ -2,7 +2,7 @@
 % Please edit documentation in R/MINetworkPlot_topEdges.R
 \name{MINetworkPlot_topEdges}
 \alias{MINetworkPlot_topEdges}
-\title{Plots mutual information network (using mrnet algorithm) connection using the parmigene package}
+\title{Plots mutual information network (mrnet algorithm) connection using the parmigene package. Mutual information calculated with infotheo package.}
 \usage{
 MINetworkPlot_topEdges(dataMatrix, threshold)
 }
@@ -12,6 +12,6 @@ MINetworkPlot_topEdges(dataMatrix, threshold)
 \item{threshold}{the number of edges to draw for each subpopulation mutual information network}
 }
 \description{
-Plots mutual information network (using mrnet algorithm) connection using the parmigene package
+Plots mutual information network (mrnet algorithm) connection using the parmigene package. Mutual information calculated with infotheo package.
 }
 
