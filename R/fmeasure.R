@@ -1,3 +1,5 @@
+#' F-measure Calculation
+#' 
 #' Compute the F measure between the ground truth and the estimated label
 #' 
 #' @param  g  the ground truth

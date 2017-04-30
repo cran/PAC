@@ -2,12 +2,15 @@
 % Please edit documentation in R/samplePass.R
 \name{samplePass}
 \alias{samplePass}
-\title{A wrapper to run PAC and output subpopulation mutual information networks.}
+\title{Run PAC for Specified Samples}
 \usage{
-samplePass(sampleIDs, hyperrectangles, num_PACSupop, max.iter, num_networkEdge)
+samplePass(sampleIDs, dim_subset, hyperrectangles, num_PACSupop, max.iter,
+  num_networkEdge)
 }
 \arguments{
 \item{sampleIDs}{sampleID vector}
+
+\item{dim_subset}{a string vector of string names to subset the data columns for PAC; set to NULL to use all columns}
 
 \item{hyperrectangles}{number of hyperrectangles to learn for each sample}
 
@@ -18,6 +21,6 @@ samplePass(sampleIDs, hyperrectangles, num_PACSupop, max.iter, num_networkEdge)
 \item{num_networkEdge}{a threshold on the number of edges to output for each subpopulation mutual information network}
 }
 \description{
-A wrapper to run PAC and output subpopulation mutual information networks.
+A wrapper to run PAC and output subpopulation mutual information networks. Please use the PAC function itself for individual samples or if the MAN step is not needed.
 }
 

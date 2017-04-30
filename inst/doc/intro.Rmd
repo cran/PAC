@@ -9,58 +9,84 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
+This vignette illustrates the basic usage of the PAC package for R. 
+
+Biology Example
+---------------------------
+
+The PAC-MAN data analysis pipeline can be applied to mass-cytometry (CyTOF) data analysis. In this case, the user reads in the example data files (already saved as the Rdata format) subsetted from Bendall et al., 2011 and goes through the data analysis pipeline.
+
 ```{r, echo=F}
 set.seed(1)
 ```
-This vignette illustrates the basic usage of the PAC package for R. 
 
-Synthetic data
---------------
-For simplicity, we will generate the synthetic data from a mixture of gaussian. The details of the construction are unimportant, but are provided below for completeness.
+Load the required R packages
 
-```{r}
-# Problem parameters
-n = 5e3                       # number of observations
-p = 1                         # number of dimensions
-K = 3                         # number of clusters
-w = rep(1,K)/K                # component weights
-mu <- c(0,2,4)                # component means
-sd <- rep(1,K)/K              # component standard deviations
+```{r Load R packages}
+library(NMF) #for plotting heatmap; the user can choose to use other heatmap packages as well
 
-# Generate K mixture of gaussian 
-g <- sample(1:K,prob=w,size=n,replace=TRUE)   # ground truth for clustering
-X <- as.matrix(rnorm(n=n,mean=mu[g],sd=sd[g]))
-```
-
-
-
-# Basic usage
-
-The main entry point for the PAC package is the function `PAC`. To begin, we call `PAC` with all of the default options.
-```{r}
 library(PAC)
-y <- PAC(X, K)
+
+
 ```
 
-We can evaluate the accuracy of the clustering result by computing the fmeasure between it and the ground truth:
-of the default options.
-```{r}
-print(fmeasure(g,y))
+Construct the sampleIDs vector to analyze the data
+
+```{r Load data}
+sampleIDs<-c("Basal", "BCR", "IL7")
+
 ```
 
-# Changing the default parameters
+Partition, cluster into desired number of subpopulations, and output subpopulation mutual information networks
 
-We now show how to change the default value of PAC's has two optional arguments: the maximum level of the partition("maxlevel") and the partition method("method"). 
-
-For example, one can use a larger number of partitions (the default is 40):
-```{r}
-y.deep <- PAC(X, K, maxlevel = 100)
-print(fmeasure(g,y.deep))
+```{r PAC and Network Inference}
+samplePass(sampleIDs, dim_subset=NULL, hyperrectangles=35, num_PACSupop=25, num_networkEdge=25, max.iter=50)
 ```
 
-Or, one can change the partition method to be bsp with limited lookahead See [@lu2013multivariate], [@wong2010optional]. The default is dsp [@yang2014density]. 
-```{r}
-y.ll <- PAC(X, K, method = 'll')
-print(fmeasure(g,y.ll))
+Multiple Alignments of Networks
+
+```{r MAN}
+
+clades_network_only<-MAN(sampleIDs, num_PACSupop=25, smallSubpopCutoff=100, k_clades=5)
+
 ```
-# References
+
+Refine the PAC labels with multiple alignments of networks representative labels for clades
+
+```{r refine PAC labels with MAN clade results}
+refineSubpopulationLabels(sampleIDs,dim_subset=NULL, clades_network_only, expressionGroupClamp=5)
+```
+
+Draw clade/representative mutual information networks
+
+```{r Clade Networks}
+getRepresentativeNetworks(sampleIDs, dim_subset=NULL, SubpopSizeFilter=200, num_networkEdge=25)
+```
+
+Obtain annotations of subpopulations
+
+```{r Annotation}
+aggregateMatrix_withAnnotation<-annotateClades(sampleIDs, topHubs=4)
+head(aggregateMatrix_withAnnotation)
+
+```
+
+
+Obtain heatmap input and plot heatmap
+
+```{r Heatmap input and plot heatmap}
+cladeProportionMatrix<-heatmapInput(aggregateMatrix_withAnnotation)
+aheatmap(as.matrix(cladeProportionMatrix))
+```
+
+
+Append subpopulation proportions for each sample in the annotation matrix
+
+```{r Append subpopulation proporation for each sample}
+annotationMatrix_prop<-annotationMatrix_withSubpopProp(aggregateMatrix_withAnnotation)
+head(annotationMatrix_prop)
+```
+
+
+
+

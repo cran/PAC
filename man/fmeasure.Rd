@@ -2,7 +2,7 @@
 % Please edit documentation in R/fmeasure.R
 \name{fmeasure}
 \alias{fmeasure}
-\title{Compute the F measure between the ground truth and the estimated label}
+\title{F-measure Calculation}
 \usage{
 fmeasure(g, t)
 }

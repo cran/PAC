@@ -2,12 +2,15 @@
 % Please edit documentation in R/getRepresentativeNetworks.R
 \name{getRepresentativeNetworks}
 \alias{getRepresentativeNetworks}
-\title{Outputs representative networks for clades/subpopulations larger than a size filter (very small subpopulations are not considered in downstream analyses)}
+\title{Representative Networks}
 \usage{
-getRepresentativeNetworks(sampleIDs, SubpopSizeFilter, num_networkEdge)
+getRepresentativeNetworks(sampleIDs, dim_subset, SubpopSizeFilter,
+  num_networkEdge)
 }
 \arguments{
 \item{sampleIDs}{sampleID vector}
+
+\item{dim_subset}{a string vector of string names to subset the data columns for PAC; set to NULL to use all columns}
 
 \item{SubpopSizeFilter}{the cutoff for small subpopulations. Smaller subpopulations have unstable covariance structure, so no network structure is calculated}
 

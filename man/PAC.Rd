@@ -2,7 +2,8 @@
 % Please edit documentation in R/PAC.R
 \name{PAC}
 \alias{PAC}
-\title{PAC (Partition Assisted Clustering)}
+\title{Partition Assisted Clustering 
+PAC 1) utilizes dsp or bsp-ll to recursively partition the data space and 2) applies a short round of kmeans style postprocessing to efficiently output clustered labels of data points.}
 \usage{
 PAC(data, K, maxlevel = 40, method = "dsp", max.iter = 50)
 }
@@ -21,7 +22,8 @@ PAC(data, K, maxlevel = 40, method = "dsp", max.iter = 50)
 y        cluter labels for the input
 }
 \description{
-PAC (Partition Assisted Clustering)
+Partition Assisted Clustering 
+PAC 1) utilizes dsp or bsp-ll to recursively partition the data space and 2) applies a short round of kmeans style postprocessing to efficiently output clustered labels of data points.
 }
 \examples{
 n = 5e3                       # number of observations

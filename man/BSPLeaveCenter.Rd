@@ -11,7 +11,7 @@ BSPLeaveCenter(data, N = 40, method = "dsp")
 
 \item{N}{number of leaves centers}
 
-\item{method}{partition method, either "dsp(discrepancy based partition)",  or "bsp(bayesian sequantial partition)"}
+\item{method}{partition method, either "dsp (discrepancy based partition)",  or "ll (bayesian sequantial partition limited-look ahead)"}
 }
 \value{
 leafctr  N leaves centers

@@ -8,7 +8,7 @@ NULL
 #' 
 #' @param  data     a n x p data matrix
 #' @param  N        number of leaves centers
-#' @param  method   partition method, either "dsp(discrepancy based partition)",  or "bsp(bayesian sequantial partition)"
+#' @param  method   partition method, either "dsp (discrepancy based partition)",  or "ll (bayesian sequantial partition limited-look ahead)"
 #' @return leafctr  N leaves centers
 #' @export
 #' @import Rcpp
@@ -18,7 +18,8 @@ BSPLeaveCenter <- function(data, N = 40, method = "dsp") {
 } 
 
 
-#' PAC (Partition Assisted Clustering)
+#' Partition Assisted Clustering
+#' PAC 1) utilizes dsp or bsp-ll to recursively partition the data space and 2) applies a short round of kmeans style postprocessing to efficiently output clustered labels of data points.
 #' 
 #' @param  data     a n x p data matrix
 #' @param  K        number of final clusters in the output

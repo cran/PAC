@@ -2,11 +2,12 @@
 #' 
 #' 
 #' @param sampleIDs sampleID vector
+#' @param dim_subset a string vector of string names to subset the data columns for PAC; set to NULL to use all columns
 #' @param clades_network_only the alignment results from MAN; used to translate the original sample-specific labels into clade labels
 #' @param expressionGroupClamp clamps the subpopulations into desired number of expression groups for assigning small subpopulations into larger groups or their own groups.
 #' @export
 
-refineSubpopulationLabels<-function(sampleIDs,clades_network_only, expressionGroupClamp){
+refineSubpopulationLabels<-function(sampleIDs, dim_subset, clades_network_only, expressionGroupClamp){
   
   subpopulationLabels<-NULL
   
@@ -34,9 +35,16 @@ refineSubpopulationLabels<-function(sampleIDs,clades_network_only, expressionGro
       }
     }
     
-    #get expression values
+    #get signal or expression values
     load(paste0(sampleID,"_dataMatrix.Rdata"))
+    
+    #subset for dimensions involved in clustering of subpopulations
+    if(!is.null(dim_subset)){
+      inputMatrix_withSampleName<-cbind(inputMatrix_withSampleName[,1], inputMatrix_withSampleName[,dim_subset])
+    }
+    
     inputMatrix_withSampleName<-as.data.frame(inputMatrix_withSampleName)
+    
     data_agg<-aggregateData(inputMatrix_withSampleName,new_subpopulationLabels)
     
     expValues<-data_agg[,3:(ncol(data_agg)-1)]

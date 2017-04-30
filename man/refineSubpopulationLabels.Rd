@@ -4,10 +4,13 @@
 \alias{refineSubpopulationLabels}
 \title{Refines the subpopulation labels from PAC using network alignment and small subpopulation information. Outputs a new set of files containing the representative labels.}
 \usage{
-refineSubpopulationLabels(sampleIDs, clades_network_only, expressionGroupClamp)
+refineSubpopulationLabels(sampleIDs, dim_subset, clades_network_only,
+  expressionGroupClamp)
 }
 \arguments{
 \item{sampleIDs}{sampleID vector}
+
+\item{dim_subset}{a string vector of string names to subset the data columns for PAC; set to NULL to use all columns}
 
 \item{clades_network_only}{the alignment results from MAN; used to translate the original sample-specific labels into clade labels}
 
