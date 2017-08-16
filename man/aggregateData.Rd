@@ -7,9 +7,9 @@
 aggregateData(dataInput, labelsInput)
 }
 \arguments{
-\item{dataInput}{File name of processed data in tab delimited format. Rows are events and columns are features measured.}
+\item{dataInput}{Data matrix, with first column being SampleID.}
 
-\item{labelsInput}{File name of output from clustering and merging step.}
+\item{labelsInput}{cluster labels from PAC.}
 }
 \value{
 The aggregated data of \code{dataInput}, with average signal levels for all clusters and sample combinations.

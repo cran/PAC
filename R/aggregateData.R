@@ -3,8 +3,8 @@ NULL
 
 #' Aggregates results from the clustering and merging step.
 #' 
-#' @param dataInput File name of processed data in tab delimited format. Rows are events and columns are features measured.
-#' @param labelsInput File name of output from clustering and merging step.
+#' @param dataInput Data matrix, with first column being SampleID.
+#' @param labelsInput cluster labels from PAC.
 #' @return The aggregated data of \code{dataInput}, with average signal levels for all clusters and sample combinations.
 #' @export
 

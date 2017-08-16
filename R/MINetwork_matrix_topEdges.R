@@ -4,7 +4,7 @@ NULL
 
 #' Mutual information network connection matrix generation (mrnet algorithm) using the parmigene package. Mutual information calculated with infotheo package.
 #' 
-#' @param dataMatrix data matrix with first column being the sample ID
+#' @param dataMatrix data matrix
 #' @param threshold the number of edges to draw for each subpopulation mutual information network
 #' @return the mutual information network connection matrix with top edges
 

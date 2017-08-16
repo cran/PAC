@@ -1,6 +1,6 @@
 ---
 title: "Using the PAC package"
-date: "2017-04-27"
+date: "2017-08-15"
 output: rmarkdown::html_vignette
 bibliography: references.bib
 vignette: >

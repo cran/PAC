@@ -7,9 +7,9 @@
 MINetworkPlot_topEdges(dataMatrix, threshold)
 }
 \arguments{
-\item{dataMatrix}{data matrix with first column being the sample ID}
+\item{dataMatrix}{data matrix}
 
-\item{threshold}{the number of edges to draw for each subpopulation mutual information network}
+\item{threshold}{the maximum number of edges to draw for each subpopulation mutual information network}
 }
 \description{
 Plots mutual information network (mrnet algorithm) connection using the parmigene package. Mutual information calculated with infotheo package.

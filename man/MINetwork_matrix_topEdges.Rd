@@ -7,7 +7,7 @@
 MINetwork_matrix_topEdges(dataMatrix, threshold)
 }
 \arguments{
-\item{dataMatrix}{data matrix with first column being the sample ID}
+\item{dataMatrix}{data matrix}
 
 \item{threshold}{the number of edges to draw for each subpopulation mutual information network}
 }
