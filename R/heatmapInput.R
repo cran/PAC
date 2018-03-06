@@ -1,4 +1,4 @@
-#' @importFrom dplyr %>% group_by summarise_each funs
+#' @importFrom dplyr %>% group_by summarise_all funs
 NULL
 
 #' Creates the matrix that can be easily plotted with a heatmap function available in an R package
@@ -26,7 +26,7 @@ heatmapInput<-function(aggregateMatrix_withAnnotation){
   
   colnames(ZeroPadding) <- colnames(dat_count_samples)
   padded_dat_count_samples <- rbind.data.frame(ZeroPadding,dat_count_samples)
-  data_agg_intermediate <- padded_dat_count_samples %>% group_by(ClusterID,  SampleID) %>% summarise_each(funs(sum))
+  data_agg_intermediate <- padded_dat_count_samples %>% group_by(ClusterID,  SampleID) %>% summarise_all(funs(sum))
   data_agg_intermediate <- data.frame(data_agg_intermediate)
   
   cladeProportionMatrix<-matrix(0,length(sample_names),length(cluster_index))

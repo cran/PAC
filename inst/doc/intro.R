@@ -2,7 +2,6 @@
 set.seed(1)
 
 ## ----Load R packages-----------------------------------------------------
-library(NMF) #for plotting heatmap; the user can choose to use other heatmap packages as well
 
 library(PAC)
 
@@ -33,7 +32,7 @@ head(aggregateMatrix_withAnnotation)
 
 ## ----Heatmap input and plot heatmap--------------------------------------
 cladeProportionMatrix<-heatmapInput(aggregateMatrix_withAnnotation)
-aheatmap(as.matrix(cladeProportionMatrix))
+heatmap(as.matrix(cladeProportionMatrix))
 
 ## ----Append subpopulation proporation for each sample--------------------
 annotationMatrix_prop<-annotationMatrix_withSubpopProp(aggregateMatrix_withAnnotation)

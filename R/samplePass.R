@@ -10,6 +10,8 @@
 #' @param max.iter postprocessing kmeans iterations
 #' @param num_networkEdge a threshold on the number of edges to output for each subpopulation mutual information network
 #' @export
+#' @examples 
+#' Please see vignette for the PAC-MAN tutorial
 
 samplePass<-function(sampleIDs, dim_subset, hyperrectangles,num_PACSupop, max.iter,num_networkEdge){
   for(i in 1:length(sampleIDs)){

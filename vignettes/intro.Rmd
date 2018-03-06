@@ -23,7 +23,6 @@ set.seed(1)
 Load the required R packages
 
 ```{r Load R packages}
-library(NMF) #for plotting heatmap; the user can choose to use other heatmap packages as well
 
 library(PAC)
 
@@ -76,7 +75,7 @@ Obtain heatmap input and plot heatmap
 
 ```{r Heatmap input and plot heatmap}
 cladeProportionMatrix<-heatmapInput(aggregateMatrix_withAnnotation)
-aheatmap(as.matrix(cladeProportionMatrix))
+heatmap(as.matrix(cladeProportionMatrix))
 ```
 
 

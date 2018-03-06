@@ -1,6 +1,6 @@
 ---
 title: "Using the PAC package"
-date: "2017-08-15"
+date: "2018-03-03"
 output: rmarkdown::html_vignette
 bibliography: references.bib
 vignette: >
@@ -22,8 +22,6 @@ Load the required R packages
 
 
 ```r
-library(NMF) #for plotting heatmap; the user can choose to use other heatmap packages as well
-
 library(PAC)
 ```
 
@@ -134,7 +132,7 @@ Obtain heatmap input and plot heatmap
 
 ```r
 cladeProportionMatrix<-heatmapInput(aggregateMatrix_withAnnotation)
-aheatmap(as.matrix(cladeProportionMatrix))
+heatmap(as.matrix(cladeProportionMatrix))
 ```
 
 ![plot of chunk Heatmap input and plot heatmap](figure/Heatmap input and plot heatmap-1.png)
