@@ -1,4 +1,4 @@
-cccb19eca2dfcd579a93de2cfd37419a *DESCRIPTION
+2f48d383c8e1beb74ebefe37b8c60cca *DESCRIPTION
 048a9099535590d8f3c21c3f814f1a79 *NAMESPACE
 9a192838a0266ce44e0f1bb5a021fc47 *R/JaccardSM.R
 770c9fc7d7dc726156798bb59ade9a8b *R/MAN.R
@@ -51,7 +51,7 @@ d415b3088967f19e277abbf03e1d2166 *man/recordWithinClusterSpread.Rd
 b08ea596de7c55b838939fe1011e6235 *man/renamePrunedSubpopulations.Rd
 506abcf9bd977ba1ea08eb1c6b1fe3f8 *man/runElbowPointAnalysis.Rd
 42883152fa3e519f28283a2924a56268 *man/samplePass.Rd
-d517a16f2688c4d83864aa8fb301b72c *src/Makevars
+c573118db7f544eefaee5b82c5e04f9a *src/Makevars
 17d93528c647e38bb65fd6ca1df2b817 *src/RcppExports.cpp
 aad1a3333f84a150ed93150e5e7e5772 *src/bsp.cc
 3aa6d729a782a7195018a6234fe35c9d *src/bsp.h
