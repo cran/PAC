@@ -71,14 +71,6 @@ head(aggregateMatrix_withAnnotation)
 ```
 
 
-Obtain heatmap input and plot heatmap
-
-```{r Heatmap input and plot heatmap}
-cladeProportionMatrix<-heatmapInput(aggregateMatrix_withAnnotation)
-heatmap(as.matrix(cladeProportionMatrix))
-```
-
-
 Append subpopulation proportions for each sample in the annotation matrix
 
 ```{r Append subpopulation proporation for each sample}

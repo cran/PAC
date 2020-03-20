@@ -1,4 +1,4 @@
-2f48d383c8e1beb74ebefe37b8c60cca *DESCRIPTION
+531970797b7b7457445173365e6c2460 *DESCRIPTION
 048a9099535590d8f3c21c3f814f1a79 *NAMESPACE
 9a192838a0266ce44e0f1bb5a021fc47 *R/JaccardSM.R
 770c9fc7d7dc726156798bb59ade9a8b *R/MAN.R
@@ -7,7 +7,7 @@ e617730d091f8929901d58745f37ab6d *R/MINetwork_matrix_topEdges.R
 5138ecddae1e2db81c871a08f3dcf303 *R/MINetwork_simpliefied_topEdges.R
 482163cbf4d0456384436fd43df49268 *R/PAC.R
 381b2c0668b414ef4e56ed0ac5012563 *R/RcppExports.R
-8a2d36b33b734a86a04be706e19873ee *R/aggregateData.R
+8c927f046292b1f51ce651f610ec8d01 *R/aggregateData.R
 ef40196b0bc9d9aa94d6f8ee2202ddcc *R/annotateClades.R
 6006813ea6f260979185a227a1cb343a *R/annotationMatrix_withSubpopProp.R
 1acfe7393df1104dca179ed33d3a091d *R/constellationPlot.R
@@ -15,7 +15,7 @@ ef40196b0bc9d9aa94d6f8ee2202ddcc *R/annotateClades.R
 c23b0b1b3866b70f1a4bd55576811583 *R/getAverageSpreadOf2SubpopClades.R
 ac788db86773c45616fa0a8942f4511d *R/getExtraneousCladeSubpopulations.R
 6a4b28b9f025a853ea97869a11a28c92 *R/getRepresentativeNetworks.R
-5f1050b70fd333c702a1ab8e742f1d64 *R/heatmapInput.R
+8bec0ed374af98f8861f91446983749a *R/heatmapInput.R
 a2f92a3e4549b9064a97bce525da06bd *R/outputNetworks_topEdges_matrix.R
 eded64307e1bcd8581d300121bf5e73d *R/outputRepresentativeNetworks_topEdges.R
 5ea1e9db0701b5489daf879b3916b329 *R/recordWithinClusterSpread.R
@@ -25,7 +25,7 @@ bdb1fc19f2eee46cdca4894ffd070073 *R/runElbowPointAnalysis.R
 c03058724ed82efee93532af9a7453f3 *R/samplePass.R
 ef749b440f5bc0ccca05737c7fa518b7 *build/vignette.rds
 f2ef2ef10f8d71a91cab189b61ff260a *inst/doc/intro.R
-2a20d7e56aa17024410b1d9ab7827682 *inst/doc/intro.Rmd
+1d2073a267604c6c9f1b8fbe2a45915d *inst/doc/intro.Rmd
 1c21d4111e432b0d4ead4651bcb72ad6 *inst/doc/intro.html
 e1d84535089645ef826bb9c007f73413 *inst/doc/intro.md
 7618efa3c88fbd6818873f9641342b15 *man/BSPLeaveCenter.Rd
@@ -64,6 +64,6 @@ daca98b8b2d72930444754e809ed858b *src/util.h
 334c81c06d09efa691b96618ddd5674a *vignettes/BCR.Rdata
 e632c599ed3401f6c583d125b9b6048a *vignettes/Basal.Rdata
 3fed5fc94095d15415549c340567cbec *vignettes/IL7.Rdata
-2a20d7e56aa17024410b1d9ab7827682 *vignettes/intro.Rmd
+1d2073a267604c6c9f1b8fbe2a45915d *vignettes/intro.Rmd
 e1d84535089645ef826bb9c007f73413 *vignettes/intro.md
 5661d2670136b2e7f5503ef7095bd4b0 *vignettes/references.bib

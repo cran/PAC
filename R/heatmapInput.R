@@ -20,14 +20,14 @@ heatmapInput<-function(aggregateMatrix_withAnnotation){
   sample_names_pad <- rep(sample_names, each = length(cluster_index))
   
   Zero_Pad <- matrix(0, length(sample_names_pad), 1)
-  ZeroPadding <- data.frame(cluster_index_pad, sample_names_pad, Zero_Pad)
+  ZeroPadding <- data.frame(cluster_index_pad, sample_names_pad, Zero_Pad, stringsAsFactors = FALSE)
   dat_count_samples <- data_agg[, c(2, 3, ncol(data_agg))]
   
   
   colnames(ZeroPadding) <- colnames(dat_count_samples)
-  padded_dat_count_samples <- rbind.data.frame(ZeroPadding,dat_count_samples)
+  padded_dat_count_samples <- rbind.data.frame(ZeroPadding,dat_count_samples, stringsAsFactors = FALSE)
   data_agg_intermediate <- padded_dat_count_samples %>% group_by(ClusterID,  SampleID) %>% summarise_all(funs(sum))
-  data_agg_intermediate <- data.frame(data_agg_intermediate)
+  data_agg_intermediate <- data.frame(data_agg_intermediate, stringsAsFactors = FALSE)
   
   cladeProportionMatrix<-matrix(0,length(sample_names),length(cluster_index))
   cladeProportionMatrix<-as.data.frame(cladeProportionMatrix)

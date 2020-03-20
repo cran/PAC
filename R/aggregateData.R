@@ -31,7 +31,7 @@ aggregateData<-function(dataInput, labelsInput){
   data<-cbind(labelsInput, dataInput)
   colnames(data)[1]<-"ClusterID"
   colnames(data)[2]<-"SampleID"
-  data<-data.frame(data)
+  data<-data.frame(data, stringsAsFactors = FALSE)
   data$count<-1
   data_agg_intermediate<-data %>% group_by(ClusterID, SampleID) %>% summarise_all(funs(sum))
   data_agg_intermediate<-data.frame(data_agg_intermediate)
