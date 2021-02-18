@@ -1,4 +1,4 @@
-b95660daa68c101c7658bde80f2b7d41 *DESCRIPTION
+84d669e11461e0dc19b4bbf1593ebdcf *DESCRIPTION
 048a9099535590d8f3c21c3f814f1a79 *NAMESPACE
 9a192838a0266ce44e0f1bb5a021fc47 *R/JaccardSM.R
 770c9fc7d7dc726156798bb59ade9a8b *R/MAN.R
@@ -8,7 +8,7 @@ e617730d091f8929901d58745f37ab6d *R/MINetwork_matrix_topEdges.R
 482163cbf4d0456384436fd43df49268 *R/PAC.R
 381b2c0668b414ef4e56ed0ac5012563 *R/RcppExports.R
 8c927f046292b1f51ce651f610ec8d01 *R/aggregateData.R
-ef40196b0bc9d9aa94d6f8ee2202ddcc *R/annotateClades.R
+8a9a78bf2774f153ea26ea561758baab *R/annotateClades.R
 6006813ea6f260979185a227a1cb343a *R/annotationMatrix_withSubpopProp.R
 1acfe7393df1104dca179ed33d3a091d *R/constellationPlot.R
 1fffe35d63d1c271a9bc98e326abff0a *R/fmeasure.R

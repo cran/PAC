@@ -44,7 +44,8 @@ annotateClades<-function(sampleIDs, topHubs){
   
   subpopName<-matrix(0,0,1)
   for(i in 1:nrow(aggregateRepNetworks)){
-    orderedGeneHubs<-sort(aggregateRepNetworks[i,], decreasing=TRUE)
+    aggregateRepNetworks_i = as.matrix(aggregateRepNetworks[i,])
+    orderedGeneHubs<-sort(aggregateRepNetworks_i, decreasing=TRUE)
     annotationGeneHubs<-orderedGeneHubs[1:topHubs]
     subpopName[i]<-paste(names(annotationGeneHubs), collapse="-")
     
