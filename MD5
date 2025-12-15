@@ -1,4 +1,4 @@
-84d669e11461e0dc19b4bbf1593ebdcf *DESCRIPTION
+3a2613eab80866b4eb24e5918b0e8fd9 *DESCRIPTION
 048a9099535590d8f3c21c3f814f1a79 *NAMESPACE
 9a192838a0266ce44e0f1bb5a021fc47 *R/JaccardSM.R
 770c9fc7d7dc726156798bb59ade9a8b *R/MAN.R
@@ -23,10 +23,10 @@ eded64307e1bcd8581d300121bf5e73d *R/outputRepresentativeNetworks_topEdges.R
 d5b69714ee70ba69b71fac4c91eff6f5 *R/renamePrunedSubpopulations.R
 bdb1fc19f2eee46cdca4894ffd070073 *R/runElbowPointAnalysis.R
 c03058724ed82efee93532af9a7453f3 *R/samplePass.R
-ef749b440f5bc0ccca05737c7fa518b7 *build/vignette.rds
-f2ef2ef10f8d71a91cab189b61ff260a *inst/doc/intro.R
+caa31f37a6e4df74bd80e6c9552d563a *build/vignette.rds
+7e7b5d6fa4addb92e3b81e62f8d9d1f0 *inst/doc/intro.R
 1d2073a267604c6c9f1b8fbe2a45915d *inst/doc/intro.Rmd
-1c21d4111e432b0d4ead4651bcb72ad6 *inst/doc/intro.html
+1615e4b6a9069e7483d9a12351b0211d *inst/doc/intro.html
 e1d84535089645ef826bb9c007f73413 *inst/doc/intro.md
 7618efa3c88fbd6818873f9641342b15 *man/BSPLeaveCenter.Rd
 7d5f87e282b513abbf1a6862d402488c *man/JaccardSM.Rd
@@ -51,7 +51,7 @@ d415b3088967f19e277abbf03e1d2166 *man/recordWithinClusterSpread.Rd
 b08ea596de7c55b838939fe1011e6235 *man/renamePrunedSubpopulations.Rd
 506abcf9bd977ba1ea08eb1c6b1fe3f8 *man/runElbowPointAnalysis.Rd
 42883152fa3e519f28283a2924a56268 *man/samplePass.Rd
-c573118db7f544eefaee5b82c5e04f9a *src/Makevars
+68b329da9893e34099c7d8ad5cb9c940 *src/Makevars
 17d93528c647e38bb65fd6ca1df2b817 *src/RcppExports.cpp
 aad1a3333f84a150ed93150e5e7e5772 *src/bsp.cc
 3aa6d729a782a7195018a6234fe35c9d *src/bsp.h
